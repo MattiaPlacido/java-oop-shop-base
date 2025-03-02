@@ -8,8 +8,8 @@ public class Prodotto {
     public int codice;
     public String nome;
     public String descrizione;
-    public double prezzo;
-    public double iva;
+    public Double prezzo;
+    public Double iva;
 
     public Prodotto(String nome,String descrizione,double prezzo,double iva){
         Random rand = new Random();
@@ -20,16 +20,29 @@ public class Prodotto {
         this.iva = iva;    
     }
 
-    public double getPrezzoBase(){
-        return prezzo;
+    public Double getPrezzoBase(){
+        if(prezzo != null){
+
+            return prezzo;
+        }else{
+            return null;
+        }
     }
 
-    public double getPrezzoConIva(){
-        return Math.round(prezzo * (1 + iva) * 100.0) / 100.0;
+    public Double getPrezzoConIva(){
+        if(prezzo != null && iva != null){
+            return Math.round(prezzo * (1 + iva) * 100.0) / 100.0;
+        }else{
+            return null;
+        }
     }
 
     public String getNomeEsteso(){
-        return codice + "-" + nome;
+        if(nome != null){
+            return codice + "-" + nome;
+        }else{
+            return String.valueOf(codice);
+        }
     }
 
 }
