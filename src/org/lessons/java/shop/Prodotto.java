@@ -1,16 +1,18 @@
 package org.lessons.java.shop;
 
-//importazione librerie
+//Import 
 import java.util.Random;
 
 public class Prodotto {
-    //Attributi 
-    public int codice;
-    public String nome;
-    public String descrizione;
-    public Double prezzo;
-    public Double iva;
+    //Attributes 
+    private int codice;
+    private String nome;
+    private String descrizione;
+    private Double prezzo;
+    private Double iva;
 
+
+    //Constructors
     public Prodotto(String nome,String descrizione,double prezzo,double iva){
         Random rand = new Random();
         this.codice = rand.nextInt(99999);
@@ -19,7 +21,23 @@ public class Prodotto {
         this.prezzo = prezzo;
         this.iva = iva;    
     }
+    public Prodotto(int codice,String nome,String descrizione,double prezzo,double iva){
+        this.codice = codice;
+        this.nome = nome;
+        this.descrizione = descrizione;
+        this.prezzo = prezzo;
+        this.iva = iva;    
+    }
+    public Prodotto(){
+        codice = 999;
+        nome = "Pacchetto di caramelle default";
+        descrizione = "Prova costruttore senza parametri";
+        prezzo = 8.0;
+        iva = 0.22;    
+    }
+    
 
+    //GET functions
     public Double getPrezzoBase(){
         if(prezzo != null){
 
@@ -44,5 +62,44 @@ public class Prodotto {
             return String.valueOf(codice);
         }
     }
+
+    public String getDescrizione(){
+        return descrizione;
+    }
+    
+    public Double getIva(){
+        return iva;
+    }
+
+    public int getCodice(){
+        return codice;
+    }
+
+    //SET functions
+    public void setNome(String nome){
+        if(nome != null){
+            this.nome = nome;
+        }
+    }
+
+    public void setDescrizione(String descrizione){
+        if(descrizione != null){
+            this.descrizione = descrizione;
+        }
+    }
+
+    public void setPrezzo(Double prezzo){
+        if(prezzo != null && !prezzo.isNaN() && prezzo >= 0){
+            this.prezzo = prezzo;
+        }
+    }
+
+    public void setIva(Double iva){
+        if(iva != null && !iva.isNaN() && iva >= 0 && iva < 1){
+            this.iva = iva;
+        }
+    }
+
+
 
 }
