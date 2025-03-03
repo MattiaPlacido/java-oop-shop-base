@@ -57,7 +57,7 @@ public class Prodotto {
 
     public String getNomeEsteso(){
         if(nome != null){
-            return codice + "-" + nome;
+            return "\n" + codice + " - " + nome;
         }else{
             return String.valueOf(codice);
         }

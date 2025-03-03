@@ -3,23 +3,16 @@ package org.lessons.java.shop;
 public class Main {
 public static void main(String[] args) {
     
-    //Prova costruttore con codice random
-    Prodotto olioExtravergine = new Prodotto("Olio extravergine", "Olio extravergine d'oliva doc", 10, 0.22);
-    //Prova costruttore con codice assegnato
-    Prodotto alberoDiNatale = new Prodotto(64,"Pino natalizio", "Pino per l'abbellimento di casa", 150,0.22);
-    //Prova costruttore senza parametri
-    Prodotto pacchettoCaramelle = new Prodotto();
+    //Smartphone || non chiedo l'iva perchè l'ho settatta di default a 0,22 in tutti i costruttori delle sottoclassi
+    Smartphone motorola = new Smartphone("Motorola Smartphone","Descrizione",180,"1923789182379182379", 3);
+    System.out.println(motorola.toString());
 
-    System.out.println(olioExtravergine.getNomeEsteso());
+    //Televisore
+    Televisore samsung = new Televisore("Samsung tv", "tv 40 pollici", 400, 40, false);
+    System.out.println(samsung.toString());
 
-    olioExtravergine.setNome("Olio motore");
-    olioExtravergine.setDescrizione("Olio motore per macchine");
-    System.out.println(olioExtravergine.getNomeEsteso());
-    System.out.println(olioExtravergine.getDescrizione());
-
-    System.out.println(alberoDiNatale.getNomeEsteso());
-
-    System.out.println(pacchettoCaramelle.getNomeEsteso());
-
+    //Cuffie
+    Cuffie JBLBluetooth = new Cuffie("JBL go Air pop","Cuffie bluetooth",30,"Bianche",true);
+    System.out.println(JBLBluetooth.toString());
 }
 }
