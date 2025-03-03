@@ -47,9 +47,14 @@ public class Prodotto {
         }
     }
 
-    public Double getPrezzoConIva(){
+    public Double getPrezzoConIva(boolean hasTessera){
         if(prezzo != null && iva != null){
-            return Math.round(prezzo * (1 + iva) * 100.0) / 100.0;
+            Double prezzoIvato = Math.round(prezzo * (1 + iva) * 100.0) / 100.0;
+            if(hasTessera){
+                return prezzoIvato / 100 * 98; //2% di sconto
+            }else{
+                return prezzoIvato;
+            }
         }else{
             return null;
         }
@@ -73,6 +78,11 @@ public class Prodotto {
 
     public int getCodice(){
         return codice;
+    }
+
+    @Override
+    public String toString(){
+        return nome + " | " + codice + " | " + prezzo;
     }
 
     //SET functions

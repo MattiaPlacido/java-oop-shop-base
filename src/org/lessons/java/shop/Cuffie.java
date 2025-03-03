@@ -27,8 +27,23 @@ public class Cuffie extends Prodotto{
         return wireless;
     }
 
+    @Override
+    public Double getPrezzoConIva(boolean hasTessera){
+        Double prezzoIvato = Math.round(getPrezzoBase() * (1 + getIva()) * 100.0) / 100.0;
+        if(hasTessera){
+            if(!wireless){
+                return prezzoIvato / 100 * 93; //7% di sconto se le cuffie sono cablate
+            }else{
+                return prezzoIvato / 100 * 98; //2% altrimenti
+            }
+        }else{
+                return prezzoIvato;
+        }
+    }
+
+    @Override
     public String toString(){
-        return getNomeEsteso() + "\n Colore : " + colore + " | " + (wireless ? "Sono wireless" : "Non sono wireless"); 
+        return super.toString() + "\n Colore : " + colore + " | " + (wireless ? "Sono wireless" : "Non sono wireless"); 
     }
 
     //Set functions

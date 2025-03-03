@@ -25,8 +25,23 @@ public class Televisore extends Prodotto{
         return smart;
     }
 
+    @Override
+    public Double getPrezzoConIva(boolean hasTessera){
+        Double prezzoIvato = Math.round(getPrezzoBase() * (1 + getIva()) * 100.0) / 100.0;
+        if(hasTessera){
+            if(!smart){
+                return prezzoIvato / 100 * 90; //10% di sconto se non è smart
+            }else{
+                return prezzoIvato / 100 * 98; //2% altrimenti
+            }
+        }else{
+                return prezzoIvato;
+        }
+    }
+
+    @Override
     public String toString(){
-        return getNomeEsteso() + "\n Dimensione : " + dimensioneInPollici + " pollici | " + (smart ? "E' smart" : "Non è smart"); 
+        return super.toString() + "\n Dimensione : " + dimensioneInPollici + " pollici | " + (smart ? "E' smart" : "Non è smart"); 
     }
 
     //Set functions

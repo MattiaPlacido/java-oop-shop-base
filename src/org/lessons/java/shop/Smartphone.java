@@ -30,8 +30,23 @@ public class Smartphone extends Prodotto{
         return ramInGB;
     }
 
+    @Override
+    public Double getPrezzoConIva(boolean hasTessera){
+        Double prezzoIvato = Math.round(getPrezzoBase() * (1 + getIva()) * 100.0) / 100.0;
+        if(hasTessera){
+            if(ramInGB < 32){
+                return prezzoIvato / 100 * 95; //5% di sconto se la ram è sotto 32GB
+            }else{
+                return prezzoIvato / 100 * 98; //2% altrimenti
+            }
+        }else{
+                return prezzoIvato;
+        }
+    }
+
+    @Override
     public String toString(){
-        return getNomeEsteso() + "\n Ram : " + ramInGB + "GB | Codice Imei : " + codiceImei; 
+        return super.toString() + "\n Ram : " + ramInGB + "GB | Codice Imei : " + codiceImei; 
     }
 
     //Set functions
